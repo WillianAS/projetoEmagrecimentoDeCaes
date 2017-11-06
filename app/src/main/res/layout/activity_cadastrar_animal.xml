@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.willian.projetopurina.CadastrarAnimal">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <EditText
+                android:id="@+id/nomeCliente"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignStart="@+id/nomeCao"
+                android:layout_marginTop="19dp"
+                android:ems="10"
+                android:hint="Nome Tutor"
+                android:inputType="textPersonName" />
+
+            <EditText
+                android:id="@+id/cpfCliente"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignStart="@+id/nomeCao"
+                android:layout_marginTop="19dp"
+                android:ems="10"
+                android:hint="CPF do Cliente"
+                android:inputType="number" />
+
+            <EditText
+                android:id="@+id/nomeCao"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/nomeCliente"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="25dp"
+                android:ems="10"
+                android:hint="Nome Cão"
+                android:inputType="textPersonName" />
+
+            <EditText
+                android:id="@+id/raca"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/nomeCao"
+                android:layout_below="@+id/nomeCao"
+                android:layout_marginTop="24dp"
+                android:ems="10"
+                android:hint="Raça"
+                android:inputType="textPersonName" />
+
+            <TextView
+                android:id="@+id/tituloSexo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textColor="#212121"
+                android:text="Sexo"
+                android:textSize="18dp" />
+
+            <RadioGroup
+                android:id="@+id/sexo"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignStart="@+id/raca"
+                android:layout_centerVertical="true"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/femea"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@+id/macho"
+                    android:layout_alignBottom="@+id/macho"
+                    android:layout_alignEnd="@+id/raca"
+                    android:layout_weight="1"
+                    android:checked="true"
+                    android:text="Fêmea" />
+
+                <RadioButton
+                    android:id="@+id/macho"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignStart="@+id/raca"
+                    android:layout_centerVertical="true"
+                    android:layout_weight="1.20"
+                    android:text="Macho" />
+
+            </RadioGroup>
+
+            <EditText
+                android:id="@+id/idadeCao"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/sexo"
+                android:layout_marginTop="21dp"
+                android:ems="10"
+                android:hint="Idade"
+                android:inputType="number" />
+
+            <EditText
+                android:id="@+id/pesoCao"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/idadeCao"
+                android:layout_marginTop="19dp"
+                android:ems="10"
+                android:hint="Peso"
+                android:inputType="numberDecimal" />
+
+            <TextView
+                android:id="@+id/tituloScore"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="#212121"
+                android:textSize="18dp"
+                android:text="Score" />
+
+            <RadioGroup
+                android:id="@+id/score"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" >
+
+                <RadioButton
+                    android:id="@+id/score7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:checked="true"
+                    android:text="Sobrepeso (Score 7)" />
+
+                <RadioButton
+                    android:id="@+id/score8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Obesidade (Score 8)" />
+
+                <RadioButton
+                    android:id="@+id/score9"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Obesidade morbida (Score 9)" />
+            </RadioGroup>
+
+            <TextView
+                android:textSize="18dp"
+                android:textColor="#212121"
+                android:id="@+id/tituloEpaticaRenalCardiaca"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Possui doenca hepatica, renal e cardiaca?" />
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" >
+
+                <RadioButton
+                    android:id="@+id/simEpaticaRenalCardica"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Sim" />
+
+                <RadioButton
+                    android:id="@+id/naoEpaticaRenalCardiaca"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:checked="true"
+                    android:text="Não" />
+            </RadioGroup>
+
+            <TextView
+                android:textColor="#212121"
+                android:id="@+id/tituloDisplasia"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="18dp"
+                android:text="Possui displasia coxofemoral com recomendacao cirurgica?" />
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" >
+
+                <RadioButton
+                    android:id="@+id/simDisplasia"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Sim" />
+
+                <RadioButton
+                    android:id="@+id/naoDisplasia"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:checked="true"
+                    android:text="Não" />
+            </RadioGroup>
+
+            <TextView
+                android:textColor="#212121"
+                android:id="@+id/tituloLesaoColuna"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="18dp"
+                android:text="Possui lesoes na coluna com recomendacao cirurgica de urgencia?" />
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" >
+
+                <RadioButton
+                    android:id="@+id/simLesaoColuna"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Sim" />
+
+                <RadioButton
+                    android:id="@+id/naoLesaoColuna"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:checked="true"
+                    android:text="Não" />
+            </RadioGroup>
+
+            <TextView
+                android:textColor="#212121"
+                android:id="@+id/tituloMetabolica"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="18dp"
+                android:text="Possui doencas metabolicas?" />
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" >
+
+                <RadioButton
+                    android:id="@+id/simMetabolica"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Sim" />
+
+                <RadioButton
+                    android:id="@+id/naoMetabolica"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:checked="true"
+                    android:text="Não" />
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/tituloGrauAtividade"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Qual grau de atividade?"
+                android:textColor="#212121"
+                android:textSize="18dp" />
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" >
+
+                <RadioButton
+                    android:id="@+id/inativo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:checked="true"
+                    android:text="Inativo" />
+
+                <RadioButton
+                    android:id="@+id/ativo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Ativo" />
+
+                <RadioButton
+                    android:id="@+id/muitoAtivo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Muito Ativo" />
+            </RadioGroup>
+
+            <Button
+                android:id="@+id/concluir"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="195dp"
+                android:text="Concluir"
+                tools:layout_editor_absoluteX="8dp"
+                tools:layout_editor_absoluteY="258dp" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>

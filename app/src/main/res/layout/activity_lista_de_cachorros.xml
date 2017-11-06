@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.willian.projetopurina.ListaDeCachorros">
+
+
+    <TextView
+        android:id="@+id/nomeCachorroPesquisado"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="43dp"
+        android:text="NOME DO CACHORRO" />
+
+    <TextView
+        android:id="@+id/txtNomeCachorro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/nomeCachorroPesquisado"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/novaPesagem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="43dp"
+        android:text="NOVO PESO"
+        android:layout_below="@+id/txtNomeCachorro"
+        android:layout_centerHorizontal="true" />
+
+    <EditText
+        android:id="@+id/txtNovoPeso"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="35dp"
+        android:ems="10"
+        android:hint="Insira nova pesagem"
+        android:inputType="numberDecimal"
+        android:layout_below="@+id/novaPesagem"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:id="@+id/btnInserirNovoPeso"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtNovoPeso"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="72dp"
+        android:text="Concluir" />
+</RelativeLayout>

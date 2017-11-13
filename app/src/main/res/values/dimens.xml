@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--SCREEN FORMAT-->
+    <dimen name="fab_margin">16dp</dimen>
+
+    <!--SPACE INTO LABELS-->
+    <dimen name="space_title_text">6dp</dimen>
+    <dimen name="space_text_title">16dp</dimen>
+
+    <!--FONT SIZE-->
+    <dimen name="font_size_title">16sp</dimen>
+    <dimen name="font_size_output">20sp</dimen>
+
+</resources>

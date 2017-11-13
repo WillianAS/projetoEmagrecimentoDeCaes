@@ -18,6 +18,8 @@ public class Relatorio {
     private String necessidade_de_kcal_dia;
     private String kcal_fornecida_dia;
     private String taxa_metabolica;
+    private String quantidade_racao;
+
     public Relatorio(){}
 
     public String getData() {
@@ -98,5 +100,13 @@ public class Relatorio {
 
     public void setTaxa_metabolica(String taxa_metabolica) {
         this.taxa_metabolica = taxa_metabolica;
+    }
+
+    public String getQuantidade_racao() {
+        return quantidade_racao;
+    }
+
+    public void setQuantidade_racao(String quantidade_racao) {
+        this.quantidade_racao = quantidade_racao;
     }
 }

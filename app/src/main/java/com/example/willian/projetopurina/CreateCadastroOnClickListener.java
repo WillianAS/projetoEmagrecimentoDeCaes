@@ -1,34 +1,13 @@
 package com.example.willian.projetopurina;
 
 import android.app.Activity;
-import android.app.AlertDialog;
-import android.app.Dialog;
 import android.content.Context;
-import android.content.DialogInterface;
-import android.icu.text.DecimalFormat;
-import android.icu.util.Calendar;
-import android.provider.MediaStore;
-import android.support.annotation.FloatRange;
-import android.support.annotation.IdRes;
-import android.text.Layout;
-import android.util.Log;
-import android.view.LayoutInflater;
+import android.content.Intent;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.Toast;
-
-import java.time.Month;
 import java.util.Date;
-import java.util.Locale;
-
-import static android.R.attr.cacheColorHint;
-import static android.R.attr.checked;
-import static android.R.attr.fingerprintAuthDrawable;
-import static android.R.attr.flipInterval;
-import static android.R.attr.publicKey;
-import static android.R.attr.switchMinWidth;
 
 /**
  * Created by willian on 11/10/17.
@@ -42,6 +21,7 @@ public class CreateCadastroOnClickListener implements View.OnClickListener {
 
         /*TRANSFORMANDO O CONTEXTO EM ACTIVITY*/
         final Activity a = (Activity) context;
+        Intent intent = new Intent(a, InformacoesDaPrimeiraInsercao.class);
 
         /*RECUPERANDO E INSERINDO INFORMAÇÕES REFERENTES A PESSOA*/
         final EditText editTextNomeCliente = a.findViewById(R.id.nomeCliente);
@@ -72,22 +52,16 @@ public class CreateCadastroOnClickListener implements View.OnClickListener {
         final RadioButton rbScore7 = a.findViewById(R.id.score7);
         final RadioButton rbScore8 = a.findViewById(R.id.score8);
         final RadioButton rbScore9 = a.findViewById(R.id.score9);
-        float score;
+        float score = 0;
 
         if (rbScore7.isChecked()) {
             score = 0.15f;
-            String stringScore = Float.toString(score);
-            cachorro.setScore(stringScore);
         }
         else if (rbScore8.isChecked()) {
             score = 0.25f;
-            String stringScore = Float.toString(score);
-            cachorro.setScore(stringScore);
         }
         else if (rbScore9.isChecked()){
             score = 0.35f;
-            String stringScore = Float.toString(score);
-            cachorro.setScore(stringScore);
         }
 
         final Relatorio relatorio = new Relatorio();
@@ -97,17 +71,17 @@ public class CreateCadastroOnClickListener implements View.OnClickListener {
 
         if (rbFemea.isChecked()) {
             cachorro.setSexo("fêmea");
-            pressaoEmagrecimento = 0.06f;
+            pressaoEmagrecimento = 60;
         } else {
             cachorro.setSexo("macho");
-            pressaoEmagrecimento = 0.05f;
+            pressaoEmagrecimento = 50;
         }
 
         if (idade > 10) {
-            pressaoEmagrecimento -= 0.01f;
+            pressaoEmagrecimento -= 10;
         }
         else if (idade >= 6) {
-            pressaoEmagrecimento -= 0.005f;
+            pressaoEmagrecimento -= 5;
         }
 
         cachorro.setCpf_pessoa(cpf);
@@ -121,28 +95,28 @@ public class CreateCadastroOnClickListener implements View.OnClickListener {
         float peso = Float.parseFloat(editTextPeso.getText().toString());
 
         if (peso > 40) {
-            pressaoEmagrecimento = pressaoEmagrecimento - 0.01f;
+            pressaoEmagrecimento -= 10;
         }
         else if (peso >= 10) {
-            pressaoEmagrecimento -= 0.005f;
+            pressaoEmagrecimento -= 5;
         }
 
         RadioButton rbDoencaHepatica = a.findViewById(R.id.simEpaticaRenalCardica);
 
         if (rbDoencaHepatica.isChecked()) {
-            pressaoEmagrecimento -= 0.005f;
+            pressaoEmagrecimento -= 5;
         }
 
         RadioButton rbDisplasia = a.findViewById(R.id.simDisplasia);
 
         if (rbDisplasia.isChecked()) {
-            pressaoEmagrecimento += 0.005f;
+            pressaoEmagrecimento += 5;
         }
 
         RadioButton rbLesaoColuna = a.findViewById(R.id.simLesaoColuna);
 
         if (rbLesaoColuna.isChecked()) {
-            pressaoEmagrecimento += 0.01f;
+            pressaoEmagrecimento += 10;
         }
 
         RadioButton rbMetabolica = a.findViewById(R.id.simMetabolica);
@@ -154,11 +128,23 @@ public class CreateCadastroOnClickListener implements View.OnClickListener {
         RadioButton rbAtividade = a.findViewById(R.id.muitoAtivo);
 
         if (rbAtividade.isChecked()) {
-            pressaoEmagrecimento -= 0.005f;
+            pressaoEmagrecimento -= 5;
         }
 
+        /*POR SER A PRIMEIRA INSERÇÃO A VARIAVEL PRESSAO DE EMAGRECIMENTO NOS DOIS PRIMEIROS MESES
+         *É 1% A MENOS DO QUE O CALCULADO -------------------------------------------------------*/
+        pressaoEmagrecimento -= 10;
+
+        float totalPressaoEmagrecimento = pressaoEmagrecimento/1000;
+
         /*FÓRMULAS*/
-        float pesoPerdido = peso * pressaoEmagrecimento;
+        float pesoIdeal = peso - (peso * score);
+
+        String stringPesoIdeal = Float.toString(pesoIdeal);
+        cachorro.setPesoIdeal(stringPesoIdeal);
+
+
+        float pesoPerdido = peso * totalPressaoEmagrecimento;
         float kcalMes = pesoPerdido * 9000;
         float kcalDia = kcalMes / 30;
 
@@ -167,21 +153,23 @@ public class CreateCadastroOnClickListener implements View.OnClickListener {
 
         float kcalFornecida = necessKcal - kcalDia;
         float taxaMetabolica = termoExp * 70;
+        float quantidadeRacao = (kcalFornecida/2990)*1000;
 
         String stringPeso = Float.toString(peso);
-        String stringPressaoEmagrecimento = Float.toString(pressaoEmagrecimento);
+        String stringPressaoEmagrecimento = Float.toString(totalPressaoEmagrecimento);
         String stringPesoPerdido = Float.toString(pesoPerdido);
         String stringKcalMes = Float.toString(kcalMes);
         String stringKcalDia = Float.toString(kcalDia);
         String stringNecessKcal = Float.toString(necessKcal);
         String stringKcalFornecida = Float.toString(kcalFornecida);
         String stringTaxaMetabolica = Float.toString(taxaMetabolica);
-
-        boolean pessoaSucesso = new BancoController(context).createPessoa(pessoa);
-        int cachorroSucesso = new BancoController(context).createCachorro(cachorro);
+        String stringQuantidadeRacao = Float.toString(quantidadeRacao);
+//
+//        boolean pessoaSucesso = new BancoController(context).createPessoa(pessoa);
+//        int cachorroSucesso = new BancoController(context).createCachorro(cachorro);
 
         /*SERAO INSERIDOS EM RELATORIO*/
-        relatorio.setId(cachorroSucesso);
+//        relatorio.setId(cachorroSucesso);
         relatorio.setData(monthname);
         relatorio.setPeso(stringPeso);
         relatorio.setPressao_emagrecimento(stringPressaoEmagrecimento);
@@ -191,14 +179,35 @@ public class CreateCadastroOnClickListener implements View.OnClickListener {
         relatorio.setNecessidade_de_kcal_dia(stringNecessKcal);
         relatorio.setKcal_fornecida_dia(stringKcalFornecida);
         relatorio.setTaxa_metabolica(stringTaxaMetabolica);
+        relatorio.setQuantidade_racao(stringQuantidadeRacao);
 
-        boolean relatorioSucesso = new BancoController(context).createRelatorio(relatorio);
+//        boolean relatorioSucesso = new BancoController(context).createRelatorio(relatorio);
+//
+//        if(pessoaSucesso && relatorioSucesso && cachorroSucesso != -1) {
+//            Toast.makeText(context, "INSERIDO COM SUCESSO", Toast.LENGTH_SHORT).show();
+//        }
+//        else {
+//            Toast.makeText(context, "ALGO ERRADO", Toast.LENGTH_SHORT).show();
+//        }
 
-        if(pessoaSucesso && relatorioSucesso && cachorroSucesso != -1) {
-            Toast.makeText(context, "INSERIDO COM SUCESSO!!", Toast.LENGTH_SHORT).show();
-        }
-        else {
-            Toast.makeText(context, "DEU RUIM!!", Toast.LENGTH_SHORT).show();
-        }
+        /*PASSANDO ESTAS INFORMAÇÕES PARA PROXIMA TELA*/
+        int previsaoFim = new CalculadoraPrevisao().calculaPrevisao(peso, pressaoEmagrecimento, pesoIdeal);
+
+        intent.putExtra("nomeTutor", nome_dono);
+        intent.putExtra("cpf", cpf);
+
+        intent.putExtra("nomeAnimal", nome_cachorro);
+        intent.putExtra("idade", idade);
+
+        intent.putExtra("peso", peso);
+        intent.putExtra("pressaoEmagrecimento", Float.toString(totalPressaoEmagrecimento*100));
+        intent.putExtra("kcalDia", Float.toString(kcalDia));
+        intent.putExtra("dietaRacao", Float.toString(quantidadeRacao));
+        intent.putExtra("pesoAPerder", Float.toString(pesoPerdido));
+        intent.putExtra("pesoRetorno", Float.toString(peso-pesoPerdido));
+        intent.putExtra("pesoIdeal", Float.toString(pesoIdeal));
+        intent.putExtra("previsaoFim", Integer.toString(previsaoFim));
+
+        context.startActivity(intent);
     }
 }

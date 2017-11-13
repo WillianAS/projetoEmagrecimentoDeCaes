@@ -36,7 +36,6 @@ public class ListaCachorrosCpfOnClickListener implements View.OnClickListener {
         /*PEGAR STRING QUE POSSUI CPF E COLOCAR NO METODO QUE BUSCA PELO CPF*/
         Cachorro dadosCachorro = new BancoController(context).buscaCPF(cpfTutor);
 
-//        intent.putExtra("nomeTutor",);
         intent.putExtra("nomeCachorro", dadosCachorro.getNome_animal());
         intent.putExtra("idCachorro", dadosCachorro.getId());
 

@@ -4,11 +4,6 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
-import android.widget.Toast;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by willian on 20/09/17.
@@ -50,7 +45,7 @@ public class BancoController extends CriaBanco {
         values.put("idade", cachorro.getIdade());
         values.put("sexo", cachorro.getSexo());
         values.put("raca", cachorro.getRaca());
-        values.put("score", cachorro.getScore());
+        values.put("pesoIdeal", cachorro.getPesoIdeal());
         values.put("cpf_pessoa", cachorro.getCpf_pessoa());
 
         /*PERMISSAO PARA ESCRITA NO BANCO*/
@@ -87,6 +82,7 @@ public class BancoController extends CriaBanco {
         values.put("necessidade_kcal_dia", relatorio.getNecessidade_de_kcal_dia());
         values.put("kcal_fornecida_dia", relatorio.getKcal_fornecida_dia());
         values.put("taxa_metabolica", relatorio.getTaxa_metabolica());
+        values.put("quantidade_racao", relatorio.getQuantidade_racao());
 
         /*PERMISSAO PARA ESCRITA NO BANCO*/
         SQLiteDatabase db = this.getWritableDatabase();
@@ -166,22 +162,39 @@ public class BancoController extends CriaBanco {
 
         SQLiteDatabase db = this.getReadableDatabase();
 
-        /*LEMBRAR DE VERIFICAR AQUI MESMO O NUMERO DE LINHAS DA TABELA DE ACORDO COM O ID
-        * ISSO SERVIRA PARA VERIFICAR SE A PRESSAO DE EMAGRECIMENTO IRA SER ALTERADA DE
-        * ACORDO COM O MES*/
-        String sql_BuscaId = "SELECT "+PRESSAO_EMAGRECIMENTO+" FROM "
-                +TABELA_CACHORRO+" JOIN "+TABELA_RELATORIO+
-                " ON "+id+" = "+ID_CACHORRO;
+        String sql_BuscaId = "SELECT "+ID_RELATORIO+", "+PRESSAO_EMAGRECIMENTO+", "+PESO+", "+PESO_PERDIDO+" FROM "
+                +TABELA_CACHORRO+" JOIN "+TABELA_RELATORIO
+                +" ON "+id+" = "+ID_CACHORRO
+                +" ORDER BY "+ID_RELATORIO+" DESC LIMIT 1";
 
-        Cursor cursor = db.rawQuery(sql_BuscaId,null);
+        Cursor cursor = db.rawQuery(sql_BuscaId, null);
 
-        if (cursor.moveToLast()) {
+        cursor.moveToFirst();
 
-            String txtPressaoEmagrecimento = cursor.getString(cursor.getColumnIndex(PRESSAO_EMAGRECIMENTO));
+        String txtPressaoEmagrecimento = cursor.getString(cursor.getColumnIndex(PRESSAO_EMAGRECIMENTO));
+        String txtUltimaPesagem = cursor.getString(cursor.getColumnIndex(PESO));
+        String txtPesoPerdidoAnterior = cursor.getString(cursor.getColumnIndex(PESO_PERDIDO));
 
-            relatorio.setPressao_emagrecimento(txtPressaoEmagrecimento);
-        }
+        relatorio.setPressao_emagrecimento(txtPressaoEmagrecimento);
+        relatorio.setPeso(txtUltimaPesagem);
+        relatorio.setPeso_perdido(txtPesoPerdidoAnterior);
 
         return relatorio;
+    }
+
+    public int contadorDeMes (int id) {
+
+        int count;
+
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        String sql_ContaMes = "SELECT * FROM "+TABELA_RELATORIO+
+                " WHERE "+ID_CACHORRO+" = "+id;
+
+        Cursor cursor = db.rawQuery(sql_ContaMes, null);
+
+        count = cursor.getCount();
+
+        return count;
     }
 }

@@ -31,12 +31,13 @@ public class CriaBanco extends SQLiteOpenHelper {
     public static final String IDADE = "idade";
     public static final String SEXO = "sexo";
     public static final String RACA = "raca";
-    public static final String SCORE = "score";
+    public static final String PESO_IDEAL = "pesoIdeal";
     public static final String CPF_PESSOA = "cpf_pessoa";
 
     /* TABELA RELATORIO + ATRIBUTOS */
     public static final String TABELA_RELATORIO = "relatorio";
 
+    public static final String ID_RELATORIO = "id_relatorio";
     public static final String ID_CACHORRO = "id_cachorro";
     public static final String MES = "mes";
     public static final String PESO = "peso";
@@ -47,6 +48,7 @@ public class CriaBanco extends SQLiteOpenHelper {
     public static final String NECESS_KCAL_DIA = "necessidade_kcal_dia";
     public static final String KCAL_FORNECIDA_DIA = "kcal_fornecida_dia";
     public static final String TAXA_METABOLICA_BASAL = "taxa_metabolica";
+    public static final String QUANTIDADE_RACAO = "quantidade_racao";
 
     public CriaBanco(Context context) {
         super(context, NOME_BANCO, null, DATABASE_VERSION);
@@ -68,12 +70,13 @@ public class CriaBanco extends SQLiteOpenHelper {
                 IDADE+" INTEGER, "+
                 RACA+" TEXT, "+
                 SEXO+" TEXT, "+
-                SCORE+" TEXT, "+
+                PESO_IDEAL+" TEXT, "+
                 CPF_PESSOA+" TEXT, "+
                 "CONSTRAINT fk_cpf_pessoa FOREIGN KEY("+CPF_PESSOA+") REFERENCES "+TABELA_PESSOA+"("+CPF+"))";
 
         /*CRIACAO DA TABELA RELATORIO*/
         String sql_criaRelatorio = "CREATE TABLE "+TABELA_RELATORIO+"("+
+                ID_RELATORIO+" INTEGER PRIMARY KEY AUTOINCREMENT, "+
                 ID_CACHORRO+" INTEGER, "+
                 MES+" TEXT, "+
                 PESO+" TEXT, "+
@@ -83,7 +86,8 @@ public class CriaBanco extends SQLiteOpenHelper {
                 KCAL_PERDIDAS_DIA+" TEXT, "+
                 NECESS_KCAL_DIA+" TEXT, "+
                 KCAL_FORNECIDA_DIA+" TEXT, "+
-                TAXA_METABOLICA_BASAL+" TEXT"+
+                TAXA_METABOLICA_BASAL+" TEXT, "+
+                QUANTIDADE_RACAO+" TEXT"+
                 ")";
 
 //        db.execSQL("PRAGMA foreign_keys=ON;");

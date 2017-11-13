@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.willian.projetopurina.InformacoesDaPrimeiraInsercao">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/fab_margin">
+
+        <TextView
+            android:id="@+id/txtNomeTutor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:textSize="@dimen/font_size_title"
+            android:text="Nome do tutor"/>
+
+        <TextView
+            android:id="@+id/getNome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_title_text"
+            android:textSize="@dimen/font_size_output"
+            android:layout_below="@+id/txtNomeTutor"/>
+
+        <TextView
+            android:id="@+id/txtCpf"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_text_title"
+            android:textSize="@dimen/font_size_title"
+            android:layout_below="@+id/getNome"
+            android:text="CPF"/>
+
+        <TextView
+            android:id="@+id/getCpf"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_title_text"
+            android:textSize="@dimen/font_size_output"
+            android:layout_below="@+id/txtCpf"
+            android:text="ASHUASHUAUHUASUSAHSUUAH"/>
+
+        <TextView
+            android:id="@+id/txtNomeAnimal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_text_title"
+            android:textSize="@dimen/font_size_title"
+            android:layout_below="@+id/getCpf"
+            android:text="Nome do animal"/>
+
+        <TextView
+            android:id="@+id/getNomeAnimal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_title_text"
+            android:textSize="@dimen/font_size_output"
+            android:layout_below="@+id/txtNomeAnimal"
+            android:text="HASUHSUAUSAHHSU"/>
+
+        <TextView
+            android:id="@+id/txtIdade"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_text_title"
+            android:textSize="@dimen/font_size_title"
+            android:layout_below="@+id/getNomeAnimal"
+            android:text="Idade do animal"/>
+
+        <TextView
+            android:id="@+id/getIdade"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_title_text"
+            android:textSize="@dimen/font_size_output"
+            android:layout_below="@+id/txtIdade"
+            android:text="123"/>
+
+        <TextView
+            android:id="@+id/txtPeso"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_text_title"
+            android:textSize="@dimen/font_size_title"
+            android:layout_below="@+id/getIdade"
+            android:text="Peso inicial"/>
+
+        <TextView
+            android:id="@+id/getPeso"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_title_text"
+            android:textSize="@dimen/font_size_output"
+            android:layout_below="@+id/txtPeso"
+            android:text="9999"/>
+
+        <TextView
+            android:id="@+id/txtData"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_text_title"
+            android:textSize="@dimen/font_size_title"
+            android:layout_below="@+id/getPeso"
+            android:text="Data de inicio"/>
+
+        <TextView
+            android:id="@+id/getData"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_title_text"
+            android:textSize="@dimen/font_size_output"
+            android:layout_below="@+id/txtData"
+            android:text="DD/MM/YYYY"/>
+
+        <!--INFOMAÇÕES ESPECIFICAS-->
+        <TextView
+            android:id="@+id/txtPressaoDeEmagrecimento"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_text_title"
+            android:textSize="@dimen/font_size_title"
+            android:layout_below="@+id/getData"
+            android:text="Pressao de Emagrecimento:"/>
+
+        <TextView
+            android:id="@+id/getPressaoDeEmagrecimento"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/font_size_output"
+            android:layout_alignBaseline="@+id/txtPressaoDeEmagrecimento"
+            android:layout_toEndOf="@+id/txtPressaoDeEmagrecimento"
+            android:layout_marginStart="10dp"
+            android:text="%%"/>
+
+        <TextView
+            android:id="@+id/txtKcalDiarias"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_text_title"
+            android:textSize="@dimen/font_size_title"
+            android:layout_below="@+id/txtPressaoDeEmagrecimento"
+            android:text="Kcal diarias:"/>
+
+        <TextView
+            android:id="@+id/getKcalDiarias"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/font_size_output"
+            android:layout_alignBaseline="@+id/txtKcalDiarias"
+            android:layout_toEndOf="@+id/txtKcalDiarias"
+            android:layout_marginStart="10dp"
+            android:text="9999"/>
+
+        <TextView
+            android:id="@+id/txtRacao"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_text_title"
+            android:textSize="@dimen/font_size_title"
+            android:layout_below="@+id/txtKcalDiarias"
+            android:text="Proplan OM:"/>
+
+        <TextView
+            android:id="@+id/getRacao"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/font_size_output"
+            android:layout_alignBaseline="@+id/txtRacao"
+            android:layout_toEndOf="@+id/txtRacao"
+            android:layout_marginStart="10dp"
+            android:text="9999"/>
+
+        <TextView
+            android:id="@+id/txtPerdaDePeso"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_text_title"
+            android:textSize="@dimen/font_size_title"
+            android:layout_below="@+id/txtRacao"
+            android:text="Quantidade de peso à perder:"/>
+
+        <TextView
+            android:id="@+id/getPerdaDePeso"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/font_size_output"
+            android:layout_alignBaseline="@+id/txtPerdaDePeso"
+            android:layout_toEndOf="@+id/txtPerdaDePeso"
+            android:layout_marginStart="10dp"
+            android:text="9999"/>
+
+        <TextView
+            android:id="@+id/txtPesoFinalMes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_text_title"
+            android:textSize="@dimen/font_size_title"
+            android:layout_below="@+id/txtPerdaDePeso"
+            android:text="Peso previsto para retorno:"/>
+
+        <TextView
+            android:id="@+id/getPesoFinalMes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/font_size_output"
+            android:layout_alignBaseline="@+id/txtPesoFinalMes"
+            android:layout_toEndOf="@+id/txtPesoFinalMes"
+            android:layout_marginStart="10dp"
+            android:text="9999"/>
+
+        <TextView
+            android:id="@+id/txtDataRetorno"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_text_title"
+            android:textSize="@dimen/font_size_title"
+            android:layout_below="@+id/txtPesoFinalMes"
+            android:text="Data de retorno:"/>
+
+        <TextView
+            android:id="@+id/getDataRetorno"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/font_size_output"
+            android:layout_alignBaseline="@+id/txtDataRetorno"
+            android:layout_toEndOf="@+id/txtDataRetorno"
+            android:layout_marginStart="10dp"
+            android:text="DD/MM/YYYY"/>
+
+        <TextView
+            android:id="@+id/txtPesoIdeal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_text_title"
+            android:textSize="@dimen/font_size_title"
+            android:layout_below="@+id/txtDataRetorno"
+            android:text="Peso ideal:"/>
+
+        <TextView
+            android:id="@+id/getPesoIdeal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/font_size_output"
+            android:layout_alignBaseline="@+id/txtPesoIdeal"
+            android:layout_toEndOf="@+id/txtPesoIdeal"
+            android:layout_marginStart="10dp"
+            android:text="9999"/>
+
+        <TextView
+            android:id="@+id/txtPrevisaoFim"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_text_title"
+            android:textSize="@dimen/font_size_title"
+            android:layout_below="@+id/txtPesoIdeal"
+            android:text="Número de meses previsto:"/>
+
+        <TextView
+            android:id="@+id/getPrevisaoFim"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/font_size_output"
+            android:layout_alignBaseline="@+id/txtPrevisaoFim"
+            android:layout_toEndOf="@+id/txtPrevisaoFim"
+            android:layout_marginStart="10dp"
+            android:text="99"/>
+
+        <Button
+            android:id="@+id/btnOK"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:layout_below="@+id/txtPrevisaoFim"
+            android:layout_centerHorizontal="true"
+            android:text="OK"/>
+
+    </RelativeLayout>
+
+</ScrollView>

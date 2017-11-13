@@ -13,7 +13,7 @@ public class Cachorro {
     private int idade;
     private String sexo;
     private String raca;
-    private String score;
+    private String pesoIdeal;
 
     public Cachorro(){}
 
@@ -57,12 +57,12 @@ public class Cachorro {
         this.cpf_pessoa = cpf_pessoa;
     }
 
-    public String getScore() {
-        return score;
+    public String getPesoIdeal() {
+        return pesoIdeal;
     }
 
-    public void setScore(String score) {
-        this.score = score;
+    public void setPesoIdeal(String pesoIdeal) {
+        this.pesoIdeal = pesoIdeal;
     }
 
     public int getId() {
